@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="sketch">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../angular.js"></script>
+	<link rel="stylesheet" href="./css/index.css">
+	<script src="./js/index.js"></script>
+</head>
+<body ng-controller="sketchController">
+	<div class="zuo">
+			<ul class="ulone">
+				<li ng-click="news()" title="A new canvas.">new</li>
+				<li><a ng-click="save($event)" title="Save the current picture.">save</a></li>
+				
+				<li title="back">back</li>
+				<li><p>index</p></li>
+			</ul>
+
+		<ul class="ultwo">
+			<li>
+				<span title="Adjustment of the canvas width.">width</span>
+				<input ng-model="canvasWH.width" type="range" min="400" max="1000" step="10" >
+			</li>
+			<li>	
+				<span title="Adjustment of the canvas height.">height</span>
+				<input ng-model="canvasWH.height" type="range" min="400" max="800" step="10" >
+			</li>
+			<li><p>change</p></li>
+		</ul>
+		
+
+		<ul class="ulthree">
+			<li ng-repeat="(key, value) in fnname" ng-click="setmousemove(value)" ng-class="{active:value==fnname1}" >
+				<span title="{{key}}">{{key}}</span>
+			</li>
+			<li><p>tools</p></li>
+		</ul>
+		
+		<ul class="ulfour">
+			<li ng-class="{active:css.style=='fill'}"ng-click="setStyle('fill')" >
+				<span title="Fill the shape.">fill</span> <br><input ng-model="css.fillStyle"  type="color">
+			</li>
+			<li ng-class="{active:css.style=='stroke'}" ng-click="setStyle('stroke')">
+				<span title="Stroke the shape.">stroke</span> <br> <input ng-model="css.strokeStyle" type="color">
+			</li>
+			<li>
+				<span title="Adjust the line width.">lineWidth</span> <br><input ng-model="css.lineWidth" type="range" min="1" max="50">
+			</li>
+			<li><p>colors</p></li>
+		</ul>
+	</div>
+	<div class="you">
+		<canvas id="canvas" width="{{canvasWH.width}}" height="{{canvasWH.height}}"></canvas>
+	</div>
+</body>
+</html>
